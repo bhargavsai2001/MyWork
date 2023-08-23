@@ -29,7 +29,7 @@
       </div>
     </nav>
 
-    <ul class="nav sticky-top nav-underline flex-column flex-sm-row justify-content-center border-1" style="background-color: #e3f2fd; font-size: 14px;">
+    <ul class="nav sticky-top shadow-sm nav-underline flex-column flex-sm-row justify-content-center border-1" style="background-color: #e3f2fd; font-size: 14px;">
       <li class="nav-item">
         <a class="nav-link " href="https://nokia.sharepoint.com/sites/Nokia_Central">Nokia Intranet</a>
       </li>
@@ -173,6 +173,49 @@
         </div>
       </div>
       
+      <hr><!-------------------------------------->
+
+      <br>
+
+      <div class="row text-center">
+        <div class="col">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <p class="display-6" id="days-passed"></p>
+              <p>Days completed</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <p class="display-6">07 Jun 2023</p>
+              <p>Date of Joining</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <p class="display-6" id="oneyear"></p>
+              <p>Days left for 1 year</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <p class="display-6">62365810</p>
+              <p>Employee ID</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
     </div>
     <div>
       <br>
@@ -199,6 +242,7 @@
                 <span>Phone: 7780465722</span>
                 <br>
                 <span>Email: nizampatnam.bhargav_sai@nokia.com</span>
+                <p id="days-passed"></p>
               </p>
             </div>
             <div class="col d-flex justify-content-end align-items-center">
@@ -211,5 +255,26 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      
+      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      const firstDate = new Date(yyyy, mm, dd);
+      const secondDate = new Date(2023, 6, 7);
+
+      const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
+      document.getElementById("days-passed").innerHTML = diffDays;
+
+      var oneyr = (365-diffDays);
+
+      document.getElementById("oneyear").innerHTML = oneyr;
+
+    </script>
   </body>
 </html>
